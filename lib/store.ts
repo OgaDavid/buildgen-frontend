@@ -71,3 +71,14 @@ export const setDemoValuesAtom = atom(null, (get, set) => {
   // Generate a product idea based on these values
   set(generateProductIdeaAtom);
 });
+
+// Reset form data and go back to step 1
+export const resetFormAtom = atom(null, (get, set) => {
+  set(spaceAtom, "");
+  set(vibeAtom, "");
+  set(timeAtom, "");
+  set(stepAtom, 1);
+  set(productIdeaAtom, null);
+  set(isLoadingAtom, true);
+  set(activeTabAtom, "stack");
+});

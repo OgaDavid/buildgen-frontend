@@ -56,7 +56,7 @@ export default function Generator() {
             <p className="mt-2 text-gray-400">Tell us about your project</p>
           </div>
 
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex justify-between items-center mb-8 ml-[120px]">
             <StepIndicator currentStep={step} totalSteps={3} />
           </div>
 
