@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import Link from "next/link"
-import { Zap, Lightbulb, Rocket } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import { Zap, Lightbulb, Rocket } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -9,10 +10,19 @@ export default function Home() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
+            <Image
+              src="/buildgen-logo.svg"
+              alt="BuildGen Logo"
+              width={100}
+              height={100}
+              className="mx-auto mb-4 rounded-full shadow-lg"
+            />
             <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
               BuildGen
             </h1>
-            <p className="mt-4 text-xl text-gray-300">Generate tailored product ideas for your next build</p>
+            <p className="mt-4 text-xl text-gray-300">
+              Generate tailored product ideas for your next build
+            </p>
           </div>
 
           <Card className="bg-gray-900 border-gray-800">
@@ -45,19 +55,29 @@ export default function Home() {
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-function FeatureCard({ icon, title, description }: { icon: string; title: string; description: string }) {
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: string;
+  title: string;
+  description: string;
+}) {
   return (
     <div className="flex flex-col items-center text-center p-4 rounded-lg bg-gray-800/50">
       <div className="h-12 w-12 rounded-full bg-purple-500/20 flex items-center justify-center mb-4">
         {icon === "Zap" && <Zap className="h-6 w-6 text-purple-400" />}
-        {icon === "Lightbulb" && <Lightbulb className="h-6 w-6 text-purple-400" />}
+        {icon === "Lightbulb" && (
+          <Lightbulb className="h-6 w-6 text-purple-400" />
+        )}
         {icon === "Rocket" && <Rocket className="h-6 w-6 text-purple-400" />}
       </div>
       <h3 className="text-lg font-medium mb-2">{title}</h3>
       <p className="text-gray-400 text-sm">{description}</p>
     </div>
-  )
+  );
 }
