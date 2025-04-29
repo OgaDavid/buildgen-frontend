@@ -25,12 +25,13 @@ import {
   BookOpen,
   Box,
 } from "lucide-react"
+import { useRouter } from "next/navigation" 
 import Link from "next/link"
 import dynamic from "next/dynamic"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Checkbox } from "@/components/ui/checkbox"
-import { formDataAtom, isLoadingAtom, productIdeaAtom, generateProductIdeaAtom, activeTabAtom } from "@/lib/store"
+import { formDataAtom, isLoadingAtom, productIdeaAtom, generateProductIdeaAtom, activeTabAtom, resetFormAtom } from "@/lib/store"
 
 // Dynamically import Mermaid component with SSR disabled
 const MermaidChart = dynamic(() => import("@/components/mermaid-chart"), { ssr: false })
@@ -55,6 +56,8 @@ export default function Results() {
   const [, generateProductIdea] = useAtom(generateProductIdeaAtom)
   const [activeTab, setActiveTab] = useAtom(activeTabAtom)
   const [isTabLoading, setIsTabLoading] = useState(false)
+  const [, resetForm] = useAtom(resetFormAtom)
+  const router = useRouter()
 
   // Handle tab change with loading indicator
   const handleTabChange = (value: string) => {
@@ -65,6 +68,12 @@ export default function Results() {
     setTimeout(() => {
       setIsTabLoading(false)
     }, Math.floor(Math.random() * 700) + 800)
+  }
+
+  // Handle back to generator with form reset
+  const handleBackToGenerator = () => {
+    resetForm()
+    router.push("/generator")
   }
 
   useEffect(() => {
@@ -110,11 +119,13 @@ export default function Results() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-between items-center mb-8">
-            <Link href="/generator">
-              <Button variant="outline" className="bg-gray-900 border-gray-800 hover:bg-gray-800">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Generator
-              </Button>
-            </Link>
+            <Button 
+              variant="outline" 
+              className="bg-gray-900 border-gray-800 hover:bg-gray-800"
+              onClick={handleBackToGenerator}
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Generator
+            </Button>
             <div className="flex gap-2">
               <Button variant="outline" className="bg-gray-900 border-gray-800 hover:bg-gray-800">
                 <Share2 className="mr-2 h-4 w-4" /> Share
