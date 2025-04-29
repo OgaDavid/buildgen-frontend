@@ -10,13 +10,13 @@ export default function Home() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <Image
+            {/* <Image
               src="/buildgen-logo.svg"
               alt="BuildGen Logo"
               width={100}
               height={100}
               className="mx-auto mb-4 rounded-full shadow-lg"
-            />
+            /> */}
             <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
               BuildGen
             </h1>
